@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="cards"></div>
+  </body>
+  <script>
+    let numbers = [
+      10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
+      100, 105,
+    ];
+
+    const cardsElem = document.getElementById("cards");
+    cardsElem.style.display = "flex";
+    cardsElem.style.flexWrap = "wrap";
+    cardsElem.style.gap = "20px";
+
+    for (let i = 0; i < numbers.length; i++) {
+      const pTag = document.createElement("p");
+      pTag.innerText = numbers[i];
+      pTag.style.padding = "40px";
+
+      //   pTag.style.display = "inline";
+      //   pTag.style.margin = "0 15px";
+      pTag.style.textAlign = "center";
+      //   pTag.style.flexDirection = "row";
+      //   pTag.style.flexWrap = "wrap";
+      //   pTag.style.gap = "10px";
+      if (numbers[i] % 2 === 0) {
+        pTag.style.backgroundColor = "red";
+      } else {
+        pTag.style.backgroundColor = "blue";
+      }
+      cardsElem.appendChild(pTag);
+    }
+
+    // cardsElem.style.margin = "20px";
+  </script>
+</html>
