@@ -47,10 +47,11 @@
       cardsElem.appendChild(pTag);
       pTag.addEventListener("click", (e) => {
         console.log("clicked", e.target);
-        // e.target.style.backgroundColor = "tomato";
+        e.target.style.backgroundColor = "tomato";
         // let color = e.target.style.backgroundColor;
-        console.log(color);
+
         let alertText = e.target.innerText;
+        console.log(alertText);
         alert("you clicked " + alertText);
       });
     }
