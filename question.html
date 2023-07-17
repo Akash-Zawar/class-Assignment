@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <div id="cards"></div>
@@ -18,27 +23,36 @@
     cardsElem.style.display = "flex";
     cardsElem.style.flexWrap = "wrap";
     cardsElem.style.gap = "20px";
-    cards.style.justifyContent = "Center";
+    cards.style.justifyContent = "space-evenly";
     cards.style.alignItem = "center";
 
     for (let i = 0; i < numbers.length; i++) {
       const pTag = document.createElement("p");
+
       pTag.innerText = numbers[i];
       pTag.style.display = "flex";
       pTag.style.justifyContent = "center";
       pTag.style.alignItems = "center";
       // pTag.style.padding = "40px";
       pTag.style.width = "100px";
-      pTag.style.height = "100px";
-      pTag.style.flex = "15%";
+      pTag.style.aspectRatio = "1";
+      pTag.style.flex = "10%";
       if (numbers[i] % 2 === 0) {
         pTag.style.backgroundColor = "red";
+        pTag.className = "even";
       } else {
         pTag.style.backgroundColor = "blue";
+        pTag.className = "Odd";
       }
       cardsElem.appendChild(pTag);
+      pTag.addEventListener("click", (e) => {
+        console.log("clicked", e.target);
+        // e.target.style.backgroundColor = "tomato";
+        // let color = e.target.style.backgroundColor;
+        console.log(color);
+        let alertText = e.target.innerText;
+        alert("you clicked " + alertText);
+      });
     }
-
-    // cardsElem.style.margin = "20px";
   </script>
 </html>
