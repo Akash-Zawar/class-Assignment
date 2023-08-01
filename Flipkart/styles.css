@@ -1,0 +1,131 @@
+body{
+ max-width: 675.2px;
+ margin:auto;
+}
+
+.flext{
+    display:flex;
+    flex-direction: row;
+}
+
+.heading{
+    justify-content: space-between;
+}
+
+.nav{
+    font-size: 12px;
+    padding: auto;
+    color:grey;
+}
+
+.compare{
+    margin:8px 0px 12px 60px;
+    padding: auto;
+}
+
+.share{
+    margin:10px 0px 12px 0px;
+    padding: auto;
+}
+
+.title{
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.font{
+    font-size:14px;
+}
+
+.rating{
+    background-color: green;
+    color:white; 
+    display:flex;
+    align-items: center; 
+}
+
+.reviews{
+    margin: auto 15px;
+    color: gray;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.special{
+    color:green;
+    margin:10px;
+    margin-left: 0;
+}
+
+.price{
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.strike{
+    color:grey;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+.discount{
+    color:green;
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+.list{
+    padding-left:0;
+    list-style: none;
+}
+
+.terms{
+    margin: 7px 0;
+}
+
+.blue{
+    color: blue;
+}
+.grey{
+    color:grey;
+}
+
+.desc{
+    margin-top: 0;
+    margin-left: 45px;
+}
+.input{
+    border: 0;
+}
+
+.border{
+    border-bottom: 2px solid blue;
+    padding-right: 0;
+    width: 230px;
+}
+.change{
+    padding-right:0;
+    margin-right:0;
+}
+
+.bold{
+    font-weight: bold;
+}
+.green{
+    color:green;
+}
+.list2{
+    margin-top:0;
+}
+
+.serv{
+    margin-left: 100px;
+}
+
+.li{
+    margin-left:10px;
+}
+
+.wid{
+    width:150px;
+}
+
