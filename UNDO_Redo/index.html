@@ -1,0 +1,84 @@
+<!-- 1 maintain an array which will keep track of at least 8 changes in the form
+2 now according to the count variable the form fields will show the data
+3 undo will decrese the count by 1 and redo will increase the value by 1 
+4 disable the buttons according to the count value-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <input class="form-input" id="name" type="text" placeholder="Name" />
+      <input class="form-input" id="email" type="text" placeholder="Email" />
+      <input
+        class="form-input"
+        id="password"
+        type="password"
+        placeholder="Password"
+      />
+      <button class="history-buttons" id="undoButton" disabled>Undo</button>
+      <button class="history-buttons" id="redoButton" disabled>Redo</button>
+    </div>
+
+    <script>
+      const formInputData = document.querySelectorAll(".form-input");
+      const undoButton = document.getElementById("undoButton");
+      const redoButton = document.getElementById("redoButton");
+
+      const history = [];
+      let count = -1;
+
+      formInputData.forEach((input) => {
+        input.addEventListener("input", () => {
+          const currentState = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+          };
+
+          count++;
+          history[count] = currentState;
+          console.log(history);
+          if (count > 20) {
+            history.shift();
+            count--;
+          }
+
+          updateButtons();
+        });
+      });
+
+      undoButton.addEventListener("click", () => {
+        if (count > 0) {
+          count--;
+          updateFormData();
+          updateButtons();
+        }
+      });
+
+      redoButton.addEventListener("click", () => {
+        if (count < history.length - 1) {
+          count++;
+          updateFormData();
+          updateButtons();
+        }
+      });
+
+      function updateFormData() {
+        const currentState = history[count];
+        document.getElementById("name").value = currentState.name;
+        document.getElementById("email").value = currentState.email;
+        document.getElementById("password").value = currentState.password;
+      }
+
+      function updateButtons() {
+        undoButton.disabled = count === 0;
+        redoButton.disabled = count === history.length - 1;
+      }
+    </script>
+  </body>
+</html>

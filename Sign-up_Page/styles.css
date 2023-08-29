@@ -1,0 +1,23 @@
+body{
+    margin: 30px;
+    text-align:center;
+}
+
+.inputDiv{
+    display:flex;
+    gap:30px;
+    justify-content: space-around;
+    width:100%;
+}
+
+
+.formInput{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 2px black double;
+    padding: 20px;
+    width:500px;
+}
