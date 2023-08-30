@@ -3,21 +3,28 @@ body{
     text-align:center;
 }
 
-.inputDiv{
-    display:flex;
-    gap:30px;
-    justify-content: space-around;
-    width:100%;
+#signupForm{
+   border: 2px silver double;
+   max-width: 500px;
+   padding: 10px;
 }
 
-
-.formInput{
+div{
     display:flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
     align-items: center;
-    border: 2px black double;
-    padding: 20px;
-    width:500px;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+input{
+    width:300px;
+    height: 20px;
+}
+
+#toastMessage{
+    color:red;
+}
+
+.error{
+    color:red;
 }

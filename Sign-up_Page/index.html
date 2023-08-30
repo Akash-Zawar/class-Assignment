@@ -7,138 +7,178 @@
     <title>Sign Up Page</title>
   </head>
   <body>
-    <form action="submit" class="formInput">
-      <div class="inputDiv">
-        <label for="FName" class="inputLabel"
-          >First Name
-          <input type="text" id="FName" class="inputField" required />
-        </label>
+    <form id="signupForm">
+      <div>
+        <label for="firstName">First Name*:</label>
+        <input type="text" id="firstName" name="firstName" required />
       </div>
-      <div class="inputDiv">
-        <label for="MName"
-          >Middle Name <input type="text" id="MName" class="inputField" />
-        </label>
+      <p id="firstNameError" class="error"></p>
+
+      <div>
+        <label for="middleName">Middle Name:</label>
+        <input type="text" id="middleName" name="middleName" />
       </div>
-      <div class="inputDiv">
-        <label for="LName" class="inputLabel"
-          >Last Name
-          <input type="text" id="LName" class="inputField" required />
-        </label>
+      <p id="middleNameError" class="error"></p>
+
+      <div>
+        <label for="lastName">Last Name*:</label>
+        <input type="text" id="lastName" name="lastName" required />
       </div>
-      <div class="inputDiv">
-        <label for="Email" class="inputLabel"
-          >Email <input type="email" id="Email" class="inputField" required />
-        </label>
+      <p id="lastNameError" class="error"></p>
+
+      <div>
+        <label for="email">Email*:</label>
+        <input type="email" id="email" name="email" required />
       </div>
-      <div class="inputDiv">
-        <label for="MPass" class="inputLabel"
-          >Password
-          <input type="password" id="MPass" class="inputField" required />
-        </label>
+      <p id="emailError" class="error"></p>
+
+      <div>
+        <label for="password">Password*:</label>
+        <input type="password" id="password" name="password" required />
       </div>
-      <div class="inputDiv">
-        <label for="CPass" class="inputLabel"
-          >Confirm Password
-          <input type="password" id="CPass" class="inputField" required />
-        </label>
+      <p id="passwordError" class="error"></p>
+
+      <div>
+        <label for="confirmPassword">Confirm Password*:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+        />
       </div>
-      <div class="inputDiv">
-        <label for="DOB" class="inputLabel"
-          >Date of Birth
-          <input type="date" id="DOB" class="inputField" required />
-        </label>
+      <p id="confirmPasswordError" class="error"></p>
+
+      <div>
+        <label for="dob">DOB*:</label>
+        <input type="date" id="dob" name="dob" required />
       </div>
-      <div class="inputDiv">
-        <label for="githubProfile" class="inputLabel"
-          >GitHub Profile Link
-          <input type="url" id="githubProfile" class="inputField" required />
-        </label>
+      <p id="dobError" class="error"></p>
+
+      <div>
+        <label for="github">GitHub Profile Link:</label>
+        <input type="url" id="github" name="github" />
       </div>
-      <div class="inputDiv">
-        <label for="LinkedInProfile" class="inputLabel"
-          >LinkedIn Profile Link
-          <input type="url" id="LinkedInProfile" class="inputField" required />
-        </label>
+      <p id="githubError" class="error"></p>
+
+      <div>
+        <label for="linkedin">LinkedIn Profile Link*:</label>
+        <input type="url" id="linkedin" name="linkedin" required />
       </div>
-      <button id="Submission">Submit</button>
+      <p id="linkedinError" class="error"></p>
+
+      <input type="submit" value="Submit" />
     </form>
+    <div id="toastMessage" style="display: none">
+      Please fill the form correctly.
+    </div>
     <script>
-      let subButton = document.getElementById("Submission");
-      let fNameElem = document.getElementById("FName");
-      let MNameElem = document.getElementById("MName");
-      let pass = document.getElementById("MPass");
-      let LNameElem = document.getElementById("LName");
-      let EmailElem = document.getElementById("Email");
-      let conPass = document.getElementById("CPass");
-      let dateOfB = document.getElementById("DOB");
-      let githubP = document.getElementById("githubProfile");
-      let LinkedInProf = document.getElementById("LinkedInProfile");
-      subButton.addEventListener("click", (e) => {
-        let firstName = fNameElem.value;
-        let middleName = MNameElem.value;
-        let lastName = LNameElem.value;
-        let password = pass.value;
-        let cPassword = conPass.value;
-        let email = EmailElem.value;
-        let dob = dateOfB.value;
-        let git = githubP.value;
-        let linkedIn = LinkedInProf.value;
-
-        console.log({
-          firstName,
-          middleName,
-          lastName,
-          password,
-          cPassword,
-          email,
-          dob,
-          git,
-          linkedIn,
-        });
-
-        if (!containsOnlyCharacters(firstName)) {
-          alert("your first name is incorrect");
-        }
-        if (!containsOnlyCharacters(middleName)) {
-          alert("your middle name is incorrect");
-        }
-        if (!containsOnlyCharacters(lastName)) {
-          alert("your last name is incorrect");
-        }
-        if (!validatePassword(password)) {
-          alert(
-            "password is incorrect. Password must contain 8 Character with 1 number & one special character"
-          );
-        }
-        if (password !== cPassword) {
-          alert("password and confirm password is not same");
-        }
-        if (!dob) {
-          alert("enter valid DOB");
-        }
-        if (!validProfile(git)) {
-          alert("enter valid github url");
-        }
-        if (!validProfile(linkedIn)) {
-          alert("enter valid linkedIn profile");
+      const form = document.getElementById("signupForm");
+      const toastMessage = document.getElementById("toastMessage");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (validateForm()) {
+          console.log("Form Submitted Successfully");
+        } else {
+          toastMessage.style.display = "block";
+          setTimeout(function () {
+            toastMessage.style.display = "none";
+          }, 3000);
         }
       });
 
-      function containsOnlyCharacters(input) {
-        return /^[a-zA-Z]+$/.test(input);
+      function validateForm() {
+        let isValid = true;
+
+        const firstName = document.getElementById("firstName");
+        const middleName = document.getElementById("middleName");
+        const lastName = document.getElementById("lastName");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const dob = document.getElementById("dob");
+        const github = document.getElementById("github");
+        const linkedin = document.getElementById("linkedin");
+
+        const errorElements = document.getElementsByClassName(".error");
+        for (let i = 0; i < errorElements.length; i++) {
+          errorElements[i].textContent = "";
+        }
+
+        if (!isValidName(firstName.value)) {
+          document.getElementById("firstNameError").innerText =
+            "Please enter Characters only";
+          isValid = false;
+        }
+
+        if (!isValidName(middleName.value)) {
+          document.getElementById("middleNameError").innerText =
+            "Please enter Characters only";
+          isValid = false;
+        }
+
+        if (!isValidName(lastName.value)) {
+          document.getElementById("lastNameError").innerText =
+            "Please enter Characters only";
+          isValid = false;
+        }
+
+        if (!isValidEmail(email.value)) {
+          document.getElementById("emailError").innerText =
+            "Invalid email format enter it properly";
+          isValid = false;
+        }
+
+        if (!isValidPassword(password.value)) {
+          document.getElementById("passwordError").innerText =
+            "Minimum 8 characters with at least 1 letter, 1 number, and 1 special character";
+          isValid = false;
+        }
+
+        if (password.value !== confirmPassword.value) {
+          document.getElementById("confirmPasswordError").innerText =
+            "Passwords do not match";
+          isValid = false;
+        }
+
+        if (!isValidDate(dob.value)) {
+          document.getElementById("dobError").innerText = "Invalid date";
+          isValid = false;
+        }
+
+        if (!isValidUrl(github.value)) {
+          document.getElementById("githubError").innerText = "Invalid URL";
+          isValid = false;
+        }
+
+        if (!isValidUrl(linkedin.value)) {
+          document.getElementById("linkedinError").innerText = "Invalid URL";
+          isValid = false;
+        }
       }
-      function validatePassword(password) {
-        const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8}$/;
-        return regex.test(password);
+
+      function isValidName(name) {
+        const n = /^[A-Za-z]+$/;
+        return n.test(name);
       }
+
       function isValidEmail(email) {
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailPattern.test(email);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
       }
-      function validProfile(url) {
-        const githubProfilePattern =
-          /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+$/i;
-        return githubProfilePattern.test(url);
+
+      function isValidPassword(password) {
+        pass = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+        return pass.test(password);
+      }
+
+      function isValidUrl(url) {
+        const urlvalid = /^(ftp|http|https):\/\/[^ "]+$/;
+        return urlvalid.test(url);
+      }
+
+      function isValidDate(date) {
+        return !isNaN(Date.parse(date));
       }
     </script>
   </body>
