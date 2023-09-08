@@ -87,7 +87,7 @@ function renderUI(data) {
     const currentRepo = data[i];
     const repoName = document.createElement("p");
     repoName.className = "repoItem";
-    repoName.value = currentRepo.name;
+    repoName.innerText = currentRepo.name;
     console.log(repoName);
     repoName.style.color = "red";
     repoName.style.backgroundColor = "silver";
