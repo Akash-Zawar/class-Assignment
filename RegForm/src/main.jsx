@@ -6,7 +6,5 @@ import Lifecycle from './assets/lifeCycle.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.Fragment>
     <MyForm />
-    <hr />
-    <Lifecycle />
   </React.Fragment>,
 )
