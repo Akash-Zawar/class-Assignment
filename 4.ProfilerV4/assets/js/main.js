@@ -83,6 +83,7 @@ searchBarElem.addEventListener("keyup", (e) => {
 });
 
 function renderUI(data) {
+  repo.innerText = "";
   for (let i = 0; i < data.length; i++) {
     const currentRepo = data[i];
     const repoName = document.createElement("p");
