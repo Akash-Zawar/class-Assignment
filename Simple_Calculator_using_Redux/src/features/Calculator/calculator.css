@@ -1,0 +1,18 @@
+.input{
+    width: 200px;
+    padding:5px;
+    margin:10px;
+    height: 20px;
+}
+
+.calculatorButtons{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+button{
+    width: 80px;
+    padding:3px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}

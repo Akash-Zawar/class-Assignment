@@ -1,0 +1,16 @@
+.orignal{
+    filter:none;
+    margin:40px;
+}
+.inverted{
+    filter: invert(100%);
+    margin: 40px;
+}
+
+.pinkcolor{
+    color:pink;
+}
+
+.orangecolor{
+    color:orange;
+}
